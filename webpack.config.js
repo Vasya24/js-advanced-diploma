@@ -34,7 +34,7 @@ module.exports = {
         {
             test: /\.css$/,
             use: [
-                // MiniCssExtractPlugin.loader,
+                MiniCssExtractPlugin.loader,
                  'css-loader',
             ],
         },
@@ -56,5 +56,8 @@ module.exports = {
             template: './src/index.html',
             filename: './index.html',
         }),
+        new MiniCssExtractPlugin({
+            filename: './style.css'
+        })
     ],
 };
