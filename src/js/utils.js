@@ -20,7 +20,6 @@ export function calcTileType(index, boardSize) {
     default:
       return 'center';
   }
-  return 'center';
 }
 
 export function calcHealthLevel(health) {
