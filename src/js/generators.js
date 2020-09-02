@@ -1,3 +1,6 @@
+import getPosition from './getPosition';
+import PositionedCharacter from './characters/PositionedCharacter';
+
 /**
  * Generates random characters
  *
@@ -5,8 +8,8 @@
  * @param maxLevel max character level
  * @returns Character type children (ex. Magician, Bowman, etc)
  */
+
 export function* characterGenerator(allowedTypes, maxLevel) {
-  // TODO: write logic here
   while (true) {
     const randomLevel = Math.floor(Math.random() * maxLevel) + 1;
     const RandomType = allowedTypes[Math.floor(Math.random() * allowedTypes.length)];
