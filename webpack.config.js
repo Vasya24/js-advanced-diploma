@@ -1,63 +1,55 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-    mode: 'development',
-    entry: './src/index.js',
-    output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: 'app.bundle.js'
-    },
-    devServer: {
-        contentBase: path.join(__dirname, 'dist'),
-        compress: true,
-        port: 4242
-      },
-    module: {
-        rules: [
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                use: { 
-                    loader: 'babel-loader'
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(png|jpg|gif)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
             },
-        },
-        {
-            test: /\/html$/,
-            use: [
-                {
-                    loader: 'html-loader',
-                },
-            ],
-        },
-        {
-            test: /\.css$/,
-            use: [
-                MiniCssExtractPlugin.loader,
-                 'css-loader',
-            ],
-        },
-        {
-            test: /\.(png|jpg|gif)$/i,
-            use: [
-                {
-                    loader: 'url-loader',
-                    options: {
-                        limit: 8192,
-                    },
-                },
-            ],
-        }
+          },
         ],
-    },
-    plugins: [
-        new HtmlWebpackPlugin({
-            template: './src/index.html',
-            filename: './index.html',
-        }),
-        new MiniCssExtractPlugin({
-            filename: './style.css'
-        })
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+        },
+      },
+      {
+        test: /\.html$/,
+        use: [
+          {
+            loader: 'html-loader',
+          },
+        ],
+      },
+      {
+        test: /\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader, 'css-loader',
+        ],
+      },
     ],
+  },
+  plugins: [
+    new HtmlWebPackPlugin({
+      template: './src/index.html',
+      filename: './index.html',
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css',
+    }),
+  ],
 };
