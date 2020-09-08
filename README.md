@@ -1,3 +1,5 @@
+https://vasya24.github.io/js-advanced-diploma/
+
 # AJS. Retro Game
 
 ###### tags: `netology` `advanced js`
