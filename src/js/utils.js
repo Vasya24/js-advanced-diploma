@@ -22,13 +22,22 @@ export function calcTileType(index, boardSize) {
 }
 
 export function calcHealthLevel(health) {
-  if (health < 15) {
-    return 'critical';
-  }
+  // if (health < 15) {
+  //   return 'critical';
+  // }
 
-  if (health < 50) {
-    return 'normal';
-  }
+  // if (health < 50) {
+  //   return 'normal';
+  // }
 
-  return 'high';
+  // return 'high';
+
+  switch (health) {
+    case health < 15:
+      return 'critical';
+      case health < 50:
+      return 'normal';
+      default:
+        return 'high';
+  }
 }
