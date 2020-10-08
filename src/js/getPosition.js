@@ -14,9 +14,9 @@ export default function getPosition(character) {
 
   if (['bowman', 'swordsman', 'magician'].includes(character.type)) {
     return userPositions[Math.floor(Math.random() * (userPositions.length - 1))];
-  }
+  };
   if (['undead', 'daemon', 'vampire'].includes(character.type)) {
     return computerPositions[Math.floor(Math.random() * (computerPositions.length - 1))];
-  }
+  };
   return false;
 }

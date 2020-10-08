@@ -19,35 +19,58 @@ export default function checkOpportunity(type, position, character, index) {
     for (let i = 1; i <= character.walkAbility; i += 1) {
       let openString = stringCoords + i;
 
-      if (openString < boardSize) {
-        openCells.push(board[openString][columnCoords]);
-      }
-      let openColumn = columnCoords + i;
 
-      if (openColumn < boardSize) {
-        openCells.push(board[stringCoords][openColumn]);
+      switch (openCells) {
+        case openString < boardSize:
+          openCells.push(board[openString][columnCoords]);
+        let openColumn = columnCoords + i;
+        case openColumn < boardSize:
+          openCells.push(board[stringCoords][openColumn])
+        case openString < boardSize && openColumn < boardSize:
+          openCells.push(board[openString][openColumn]);
+          openString = stringCoords - i;
+        case openString >= 0:
+          openCells.push(board[openString][columnCoords]);
+        case openString >= 0 && openColumn < boardSize:
+          openCells.push(board[openString][openColumn]);
+          openColumn = columnCoords - i;
+        case openColumn >= 0:
+          openCells.push(board[stringCoords][openColumn]);
+        case openString >= 0 && openColumn >= 0:
+            openCells.push(board[openString][openColumn]);
+            openString = stringCoords + i;
+        case openString < boardSize && openColumn >= 0:
+            openCells.push(board[openString][openColumn])
       }
-      if (openString < boardSize && openColumn < boardSize) {
-        openCells.push(board[openString][openColumn]);
-      }
-      openString = stringCoords - i;
-      if (openString >= 0) {
-        openCells.push(board[openString][columnCoords]);
-      }
-      if (openString >= 0 && openColumn < boardSize) {
-        openCells.push(board[openString][openColumn]);
-      }
-      openColumn = columnCoords - i;
-      if (openColumn >= 0) {
-        openCells.push(board[stringCoords][openColumn]);
-      }
-      if (openString >= 0 && openColumn >= 0) {
-        openCells.push(board[openString][openColumn]);
-      }
-      openString = stringCoords + i;
-      if (openString < boardSize && openColumn >= 0) {
-        openCells.push(board[openString][openColumn]);
-      }
+      // if (openString < boardSize) {
+      //   openCells.push(board[openString][columnCoords]);
+      // }
+      // let openColumn = columnCoords + i;
+
+      // if (openColumn < boardSize) {
+      //   openCells.push(board[stringCoords][openColumn]);
+      // }
+      // if (openString < boardSize && openColumn < boardSize) {
+      //   openCells.push(board[openString][openColumn]);
+      // }
+      // openString = stringCoords - i;
+      // if (openString >= 0) {
+      //   openCells.push(board[openString][columnCoords]);
+      // }
+      // if (openString >= 0 && openColumn < boardSize) {
+      //   openCells.push(board[openString][openColumn]);
+      // }
+      // openColumn = columnCoords - i;
+      // if (openColumn >= 0) {
+      //   openCells.push(board[stringCoords][openColumn]);
+      // }
+      // if (openString >= 0 && openColumn >= 0) {
+      //   openCells.push(board[openString][openColumn]);
+      // }
+      // openString = stringCoords + i;
+      // if (openString < boardSize && openColumn >= 0) {
+      //   openCells.push(board[openString][openColumn]);
+      // }
     }
   } else {
     let minString = stringCoords - character.attackAbility;
