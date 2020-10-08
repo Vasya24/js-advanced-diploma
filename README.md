@@ -1,4 +1,4 @@
-https://vasya24.github.io/js-advanced-diploma/
+https://vasya24.github.io/js-advanced-diploma/dist
 
 # AJS. Retro Game
 
